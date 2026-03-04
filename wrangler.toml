@@ -5,3 +5,7 @@ pages_build_output_dir = ".open-next/assets"
 
 [vars]
 NEXT_PUBLIC_BASE_URL = "https://dilu.wokspec.org"
+
+[[kv_namespaces]]
+binding = "WAITLIST_KV"
+id = "97ea97b2c7854e94adc79f9dfd965c68"

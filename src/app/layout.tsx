@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import EralWidget from '@/components/EralWidget';
 
 export const metadata: Metadata = {
   title: 'Dilu — Build like WokSpec',
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-dilu-bg text-white antialiased font-sans">{children}</body>
+      <body className="bg-dilu-bg text-white antialiased font-sans">
+        {children}
+        <EralWidget />
+      </body>
     </html>
   );
 }

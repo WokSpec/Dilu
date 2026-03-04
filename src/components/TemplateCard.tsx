@@ -1,10 +1,10 @@
+import Link from 'next/link';
 import type { Template } from '@/lib/templates';
 
 export default function TemplateCard({ t }: { t: Template }) {
   return (
     <div
       className="group relative flex flex-col rounded-2xl border border-dilu-border bg-dilu-surface hover:border-white/10 transition-all duration-300 overflow-hidden"
-      style={{ '--card-color': t.color } as React.CSSProperties}
     >
       {/* Top color bar */}
       <div
@@ -12,7 +12,7 @@ export default function TemplateCard({ t }: { t: Template }) {
         style={{ background: `linear-gradient(90deg, ${t.color}, ${t.color}80)` }}
       />
 
-      {/* Coming soon overlay */}
+      {/* Coming soon badge */}
       {t.status === 'coming-soon' && (
         <div className="absolute top-4 right-4 text-xs font-semibold px-2 py-1 rounded-full bg-dilu-bg border border-dilu-border text-dilu-muted">
           Coming soon
@@ -51,6 +51,13 @@ export default function TemplateCard({ t }: { t: Template }) {
 
         {/* Actions */}
         <div className="flex items-center gap-3 pt-2 border-t border-dilu-border">
+          <Link
+            href={`/templates/${t.id}`}
+            className="text-xs text-dilu-muted hover:text-white transition-colors flex items-center gap-1"
+          >
+            <span>View details</span>
+            <span>→</span>
+          </Link>
           {t.liveUrl && (
             <a
               href={t.liveUrl}
@@ -62,16 +69,16 @@ export default function TemplateCard({ t }: { t: Template }) {
               <span>↗</span>
             </a>
           )}
-          <a
-            href="#waitlist"
+          <Link
+            href={t.status === 'available' ? `/start?template=${t.id}` : '#waitlist'}
             className={`ml-auto text-sm font-semibold px-4 py-2 rounded-lg transition-all ${
               t.status === 'available'
                 ? 'bg-white/10 hover:bg-white/15 text-white'
-                : 'bg-dilu-border text-dilu-muted cursor-not-allowed'
+                : 'bg-dilu-border text-dilu-muted'
             }`}
           >
             {t.status === 'available' ? 'Use template' : 'Notify me'}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
