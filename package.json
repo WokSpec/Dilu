@@ -1,0 +1,30 @@
+{
+  "name": "@wokspec/dilu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "build:cf": "next build && npx opennextjs-cloudflare build --skipNextBuild",
+    "deploy": "npm run build:cf && wrangler pages deploy .open-next/assets --project-name wokspec-dilu --branch main --commit-dirty=true",
+    "preview": "npm run build:cf && wrangler pages dev .open-next/assets",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5",
+    "wrangler": "^4.0.0"
+  }
+}
