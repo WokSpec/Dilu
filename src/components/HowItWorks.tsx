@@ -1,21 +1,18 @@
 const steps = [
   {
-    number: '01',
-    title: 'Pick a template',
-    description:
-      "Browse templates built from real WokSpec products. Each one ships production-ready — AI integrated, Cloudflare deployed, fully owned by you.",
+    number: "01",
+    title: "Pick a template",
+    description: "Browse templates built from real WokSpec products — each one already runs in production.",
   },
   {
-    number: '02',
-    title: 'Configure in minutes',
-    description:
-      'Tell us your brand, your domain, your tone. Dilu handles the rest — no environment variables, no YAML files, no CLI knowledge required.',
+    number: "02",
+    title: "Configure it",
+    description: "Set your name, colors, and domain. That is it.",
   },
   {
-    number: '03',
-    title: 'Ship and own it',
-    description:
-      "Your product goes live on your domain, backed by Cloudflare's global network. You get the code, the repo, and full control. No platform lock-in.",
+    number: "03",
+    title: "Get the repo",
+    description: "A GitHub repo is created in your account and deployed to Cloudflare. You own it.",
   },
 ];
 
@@ -24,15 +21,7 @@ export default function HowItWorks() {
     <section id="how" className="py-32 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-20">
-          <p className="text-dilu-purple font-semibold text-sm uppercase tracking-widest mb-4">
-            How it works
-          </p>
-          <h2 className="text-4xl md:text-5xl font-black">
-            Zero complexity. Real products.
-          </h2>
-          <p className="text-dilu-muted mt-4 text-lg max-w-xl mx-auto">
-            We spent years building WokSpec the hard way. Dilu is the shortcut we wish existed.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-black">Three steps.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
