@@ -13,7 +13,7 @@
     "assemble": "rm -rf .deploy && mkdir -p .deploy && cp -r .open-next/assets/. .deploy/ && cp .open-next/worker.js .deploy/_worker.js && cp -r .open-next/cloudflare .deploy/cloudflare && cp -r .open-next/server-functions .deploy/server-functions && cp -r .open-next/middleware .deploy/middleware; cp -r .open-next/.build .deploy/.build && node -e \"const r={version:1,include:['/*'],exclude:['/_next/static/*','/favicon.ico','/_next/image*','/*.png','/*.jpg','/*.svg','/*.ico','/*.webp','/*.woff2','/*.woff','/*.ttf','/og.png','/manifest.webmanifest','/robots.txt']};require('fs').writeFileSync('.deploy/_routes.json',JSON.stringify(r))\""
   },
   "dependencies": {
-    "next": "^15.2.1",
+    "next": "^16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
