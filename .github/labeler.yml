@@ -1,0 +1,28 @@
+"area:api":
+  - changed-files:
+    - any-glob-to-any-file: "src/app/api/**"
+
+"area:ui":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "src/app/**"
+      - "src/components/**"
+
+"area:lib":
+  - changed-files:
+    - any-glob-to-any-file: "src/lib/**"
+
+"infrastructure":
+  - changed-files:
+    - any-glob-to-any-file:
+      - ".github/**"
+      - "wrangler.*"
+      - "next.config.*"
+
+"dependencies":
+  - changed-files:
+    - any-glob-to-any-file: "package*.json"
+
+"docs":
+  - changed-files:
+    - any-glob-to-any-file: "*.md"
