@@ -1,0 +1,15 @@
+rules:
+  - name: "Label and assign Dilu issues"
+    conditions:
+      - "label=sweep"
+    actions:
+      assign:
+        assignees: []
+
+github:
+  org: wokspec
+  repo: Dilu
+
+gpt_model: "gpt-4o"
+branch: "sweep/issue-{issue_number}"
+description: "Sweep AI — auto-resolves GitHub issues tagged with `sweep`."

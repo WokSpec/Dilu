@@ -1,0 +1,53 @@
+version: "2"
+language: "en"
+tone_instructions: "Be concise and direct. Focus on correctness, security, and Cloudflare Workers edge runtime compatibility."
+early_access: false
+
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+
+path_instructions:
+  - path: "src/app/api/**"
+    instructions: |
+      Edge runtime review checklist:
+      - All CF bindings must be accessed via `getCloudflareContext({ async: true })` from `@opennextjs/cloudflare`. Do NOT use `globalThis.__env__` or `process.env` for bindings.
+      - Validate all request inputs before any side effects or KV writes.
+      - Webhook endpoints MUST verify HMAC/signature (Shopify: X-Shopify-Hmac-Sha256, Stripe: Stripe-Signature, Discord: Ed25519) before processing the body.
+      - No Node.js built-ins (`fs`, `path`, `crypto` module) — use Web Crypto API (`globalThis.crypto`).
+      - Return `NextResponse.json()` with appropriate status codes.
+      - Never log user PII or secrets to `console.log`.
+
+  - path: "src/app/(auth)/**"
+    instructions: |
+      Auth flow review:
+      - Sessions must be stored in KV or D1, never filesystem.
+      - Validate all redirects to prevent open redirect vulnerabilities.
+      - Use NextAuth v5 patterns with the CF Workers adapter.
+      - Auth tokens must never be exposed in client-side logs or responses.
+
+  - path: "src/lib/**"
+    instructions: |
+      Library code review:
+      - Integration client files must read all API keys from CF bindings (via `getCloudflareContext()`) or `NEXT_PUBLIC_*` env vars — never hardcoded.
+      - No Node.js-specific APIs.
+      - Library functions should be pure where possible; side effects (KV writes, HTTP calls) should be clearly separated.
+
+  - path: ".github/workflows/**"
+    instructions: |
+      CI/workflow review:
+      - Secrets must be referenced as `${{ secrets.SECRET_NAME }}` — never hardcoded.
+      - Use pinned action versions (e.g. `actions/checkout@v4`).
+      - Avoid `pull_request_target` with untrusted code execution.
+
+chat:
+  auto_reply: true
