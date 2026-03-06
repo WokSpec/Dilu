@@ -38,7 +38,7 @@ export default function EralWidget() {
     setLoading(true);
 
     try {
-      const res = await fetch('https://api.wokspec.org/v1/chat', {
+      const res = await fetch('/api/eral/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -46,10 +46,27 @@ export default function EralWidget() {
           sessionId,
           product: 'dilu',
           pageContext: CONTEXT,
+          integration: {
+            name: 'Dilu',
+            kind: 'launchpad',
+            url: window.location.href,
+            origin: window.location.origin,
+            pageTitle: document.title,
+            capabilities: ['template-guidance', 'launch-planning'],
+            instructions: 'Help users pick the right template and explain what they can launch with WokSpec.',
+            metadata: {
+              pathname: window.location.pathname,
+              widget: 'floating',
+              surface: 'launchpad',
+            },
+          },
         }),
       });
-      const data = await res.json();
-      const reply = data?.data?.response ?? "I'm not sure about that — but try browsing the templates above!";
+      if (!res.ok) {
+        throw new Error('Eral proxy request failed');
+      }
+      const data = await res.json() as { reply?: string };
+      const reply = data.reply ?? "I'm not sure about that — but try browsing the templates above!";
       setMessages((m) => [...m, { role: 'assistant', text: reply }]);
     } catch {
       setMessages((m) => [...m, { role: 'assistant', text: "I'm having trouble connecting right now. Try again in a moment." }]);
