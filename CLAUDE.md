@@ -57,6 +57,17 @@ Dilu/
 
 ---
 
+## High-Fidelity UI Standards (Anti-Vibe-Coded)
+
+Dilu must follow the WokSpec High-Fidelity UI Standards defined in [../UI_STANDARDS.md](../UI_STANDARDS.md).
+
+- **8pt Spacing:** Use strict 4/8pt increments for all layout gaps and paddings.
+- **Loading States:** Mandatory loading indicators or skeleton screens for all async actions (e.g. wizard transitions, waitlist submission).
+- **Consistency:** Maintain uniform border-radii (e.g., matching wizard cards and template cards) and typography ramps.
+- **Anti-Vibe:** Avoid random purple gradients and sparkle emoji overkill in hero sections and taglines.
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
