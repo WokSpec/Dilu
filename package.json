@@ -1,7 +1,9 @@
 {
-  "name": "@wokspec/dilu",
+  "name": "@wokspec/launch",
   "version": "0.1.0",
   "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -10,7 +12,8 @@
     "deploy": "npm run build:cf && npm run assemble && wrangler pages deploy .deploy --project-name wokspec-dilu --branch main --commit-dirty=true",
     "preview": "npm run build:cf && wrangler pages dev .open-next/assets",
     "typecheck": "tsc --noEmit",
-    "assemble": "rm -rf .deploy && mkdir -p .deploy && cp -r .open-next/assets/. .deploy/ && cp .open-next/worker.js .deploy/_worker.js && cp -r .open-next/cloudflare .deploy/cloudflare && cp -r .open-next/server-functions .deploy/server-functions && cp -r .open-next/middleware .deploy/middleware; cp -r .open-next/.build .deploy/.build && node -e \"const r={version:1,include:['/*'],exclude:['/_next/static/*','/favicon.ico','/_next/image*','/*.png','/*.jpg','/*.svg','/*.ico','/*.webp','/*.woff2','/*.woff','/*.ttf','/og.png','/manifest.webmanifest','/robots.txt']};require('fs').writeFileSync('.deploy/_routes.json',JSON.stringify(r))\""
+    "assemble": "rm -rf .deploy && mkdir -p .deploy && cp -r .open-next/assets/. .deploy/ && cp .open-next/worker.js .deploy/_worker.js && cp -r .open-next/cloudflare .deploy/cloudflare && cp -r .open-next/server-functions .deploy/server-functions && cp -r .open-next/middleware .deploy/middleware; cp -r .open-next/.build .deploy/.build && node -e \"const r={version:1,include:['/*'],exclude:['/_next/static/*','/favicon.ico','/_next/image*','/*.png','/*.jpg','/*.svg','/*.ico','/*.webp','/*.woff2','/*.woff','/*.ttf','/og.png','/manifest.webmanifest','/robots.txt']};require('fs').writeFileSync('.deploy/_routes.json',JSON.stringify(r))\"",
+    "lint": "eslint src/"
   },
   "dependencies": {
     "next": "^15.2.1",
