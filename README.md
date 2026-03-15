@@ -53,6 +53,15 @@ No config files. No deployment commands. No infrastructure to manage.
 
 ---
 
+## Documentation
+
+- [Dilu Architecture](./docs/architecture.md)
+- [Deployment](./docs/deployment.md)
+- [WokSpec Ecosystem Overview](https://github.com/WokSpec/WokDocs)
+- [Contributing Guide](https://github.com/WokSpec/WokDocs/blob/main/CONTRIBUTING.md)
+
+---
+
 ## Pricing
 
 | | Free | Builder |
